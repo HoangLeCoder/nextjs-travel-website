@@ -131,7 +131,7 @@ body {
 
   /* Camp */
   .camp-quote {
-    @apply absolute -right-6 bottom-4 w-[140px] lg:bottom-10 xl:-right-8 xl:w-[186px] 3xl:right-0;
+    @apply absolute right-10 bottom-12 w-[140px] lg:bottom-28 lg:right-16 xl:w-[186px] xl:right-14 xl:bottom-32;
   }
 
   /* Feature */
