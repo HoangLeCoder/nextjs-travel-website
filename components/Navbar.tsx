@@ -1,7 +1,15 @@
+"use client";
+
 import { NAV_LINKS } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
+import {
+    Dropdown,
+    DropdownTrigger,
+    DropdownMenu,
+    DropdownItem,
+} from "@nextui-org/dropdown";
 
 const Navbar = () => {
     return (
@@ -28,20 +36,43 @@ const Navbar = () => {
 
             <div className="lg:flexCenter hidden">
                 <Button
-                  type = "button"
-                  title = "Login"
-                  icon= "/user.svg"
-                  variant = "btn_dark_green"
+                    type="button"
+                    title="Login"
+                    icon="/user.svg"
+                    variant="btn_dark_green"
                 />
             </div>
 
-            <Image
-              src="/menu.svg"
-              alt="menu"
-              width={32}
-              height={32}
-              className="inline-block cursor-pointer lg:hidden"
-            />
+            <Dropdown>
+                <DropdownTrigger>
+                    <Image
+                        src="/menu.svg"
+                        alt="menu"
+                        width={32}
+                        height={32}
+                        className="inline-block cursor-pointer lg:hidden"
+                    />
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Static Actions">
+                    {NAV_LINKS.map((link) => (
+                        <DropdownItem key={link.key}>
+                            <Link
+                                href={link.href}
+                                className="regular-16 text-gray-50 flexCenter cursor-pointer py-2.5"
+                            >
+                                {link.label}
+                            </Link>
+                        </DropdownItem>
+                        // <Link
+                        //     href={link.href}
+                        //     key={link.key}
+                        //     className="regular-16 text-gray-50 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold"
+                        // >
+                        //     {link.label}
+                        // </Link>
+                    ))}
+                </DropdownMenu>
+            </Dropdown>
         </nav>
     );
 };
